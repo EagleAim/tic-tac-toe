@@ -1,8 +1,8 @@
-const space = document.getElementById("game-board");
+const space = document.querySelectorAll("game-square");
 
 const restart = document.getElementById("button-play-again");
 
-const scoreBoard = document.getElementById("scoreboard");
+const scoreBoard = document.querySelectorAll("scoreboard");
 
 const turnStatus = document.getElementById("turn-tracker");
 
@@ -30,13 +30,13 @@ function startGame(){
     space.forEach(space => space.addEventListener("click", spaceClicked));
     restart.addEventListener("click", restartGame);
     turnStatus.textContent = `${playerTurn}'s turn`;
-    running=true;
+    running = true;
 }
 
 function spaceClicked(){
-    const spaceSelector = this.getAttribute("#game-board");
+    const spaceSelector = this.getAttribute("game-square");
 
-    if(moves[spaceIndex] != "" || !running){
+    if(moves[spaceSelector] != "" || !running){
         return;
     }
 
@@ -45,7 +45,7 @@ function spaceClicked(){
 }
 
 function updateSpace(cell, index){
-    options[spaceSelector] = playerTurn;
+    options[index] = playerTurn;
     space.textContent = playerTurn;
 }
 
