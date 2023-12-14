@@ -1,4 +1,4 @@
-const space = document.querySelectorAll(".game-square");
+const space = document.querySelectorAll("#game-board");
 
 const restart = document.querySelectorAll("#button-play-again");
 
@@ -22,19 +22,39 @@ const winner = [
 
 let moves = ["", "", "", "", "", "", "", "", ""];
 let playerTurn = "X";
+let running = false;
+
+startGame();
+
+function startGame(){
+    space.forEach(space => space.addEventListener("click", spaceClicked));
+    restart.addEventListener("click", restartGame);
+    turnStatus.textContent = `${playerTurn}'s turn`;
+    running=true;
+}
 
 function spaceClicked(){
+    const spaceSelector = this.getAttribute("#game-board");
 
+    if(moves[spaceIndex] != "" || !running){
+        return;
+    }
+
+    updateSelector(this, spaceSelector);
+    checkWinner();
+}
+
+function updateSpace(cell, index){
+    options[spaceSelector] = playerTurn;
+    space.textContent = playerTurn;
 }
 
 function restartGame(){
 
 }
 
-startGame();
-function startGame(){
-    space.forEach(space => space.addEventListener("click", spaceClicked))
-    restart.addEventListener("click", restartGame)
-    turnStatus.textContent = "${playerTurn}'s turn"
+function checkWinner() {
+
 }
+
 
