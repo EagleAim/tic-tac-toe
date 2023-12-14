@@ -1,14 +1,14 @@
-const space = document.querySelectorAll("square-0", "square-1", "square-2", "square-3", "square-4", "square-5", "square-6", "square-7", "square-8");
+const space = document.querySelectorAll(".square-0", ".square-1", ".square-2", ".square-3", ".square-4", ".square-5", ".square-6", ".square-7", ".square-8");
 
 const restartButton = document.querySelectorAll("button");
 
-const scoreBoard = document.querySelectorAll("scoreboard");
+const scoreBoard = document.querySelector(".scoreboard");
 
-const turnStatus = document.querySelectorAll("turn-tracker");
+const turnStatus = document.getElementById("turn-tracker");
 
-const xScore = document.querySelectorAll("scoreboard-x");
+const xScore = document.querySelector(".scoreboard-x");
 
-const oScore =document.querySelectorAll("scoreboard-y");
+const oScore = document.querySelector(".scoreboard-y");
 
 const winner = [
     
@@ -31,8 +31,8 @@ let running = false;
 startGame();
 
 function startGame(){
-    space.forEach(space => space.addEventListener("click", spaceClicked));
-    restartButton.addEventListener("click", restartGame);
+    space.forEach (space => space.addEventListener("click", spaceClicked));
+    restartButton.forEach (restartButton => restartButton.addEventListener("click", restartGame));
     turnStatus.textContent = `${playerTurn}'s turn`;
     running = true;
 }
