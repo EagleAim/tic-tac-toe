@@ -1,10 +1,14 @@
 const space = document.querySelectorAll("square-0", "square-1", "square-2", "square-3", "square-4", "square-5", "square-6", "square-7", "square-8");
 
-const restartButton = document.getElementById("button-play-again");
+const restartButton = document.querySelectorAll("button");
 
 const scoreBoard = document.querySelectorAll("scoreboard");
 
-const turnStatus = document.getElementById("turn-tracker");
+const turnStatus = document.querySelectorAll("turn-tracker");
+
+const xScore = document.querySelectorAll("scoreboard-x");
+
+const oScore =document.querySelectorAll("scoreboard-y");
 
 const winner = [
     
@@ -44,8 +48,8 @@ function spaceClicked(){
     checkWinner();
 }
 
-function updateSpace(cell, index){
-    moves[index] = playerTurn;
+function updateSpace(space, square){
+    moves[square] = playerTurn;
     space.textContent = playerTurn;
 }
 
