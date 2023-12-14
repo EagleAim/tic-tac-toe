@@ -1,4 +1,4 @@
-const space = document.querySelectorAll("game-square");
+const space = document.querySelectorAll("square-0", "square-1", "square-2", "square-3", "square-4", "square-5", "square-6", "square-7", "square-8");
 
 const restartButton = document.getElementById("button-play-again");
 
@@ -34,7 +34,7 @@ function startGame(){
 }
 
 function spaceClicked(){
-    const spaceSelector = this.getAttribute("game-square");
+    const spaceSelector = this.getAttribute("square-0", "square-1", "square-2", "square-3", "square-4", "square-5", "square-6", "square-7", "square-8");
 
     if(moves[spaceSelector] != "" || !running){
         return;
@@ -45,16 +45,52 @@ function spaceClicked(){
 }
 
 function updateSpace(cell, index){
-    options[index] = playerTurn;
+    moves[index] = playerTurn;
     space.textContent = playerTurn;
 }
 
-function restartGame(){
+function changeTurn(){
+    playerturn = (playerturn == "X") ? "O" : "X";
+    turnStatus.textContent = `${playerturn}'s turn`;
+}
 
+function restartGame(){
+    playerTurn = "X";
+    moves = ["", "", "", "", "", "", "", "", ""];
+    playerTurn.textContent = `${playerTurn}'s turn`;
+    space.forEach(space => space.textContent = "");
+    running = true
 }
 
 function checkWinner() {
+    let gameWon = false;
 
-}
+    for(let i = 0; i < winner.length; i++){
+        const condition = winner[i];
+        const space1 = moves[conditions[0]];
+        const space2 = moves[conditions[1]];
+        const space3 = moves[conditions[2]];
+
+        if(space1 == " " || space2 == "" || space3 == ""){
+            continue;
+        }
+        if (space1 == space2 && space2 == space3){
+            gameWon = true;
+            break;
+        }
+    }
+
+    if(roundWon){
+        turnStatus.textContent = `${playerTurn} won!`;
+        running=false;
+    }
+    else if (!moves.includes("")){
+        turnStatus.textContent = `Tie!`;
+        running = false
+    }
+    else{
+        changeTurn();
+    }
+} 
 
 
