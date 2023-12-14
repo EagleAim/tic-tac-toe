@@ -98,3 +98,12 @@ function checkWinner() {
 } 
 
 
+let xWins = 0;
+
+let oWins = 0;
+
+function drawWins(){
+    xScore.textContent = (`${xWins}`, 0, 100);
+    oScore.textContent = (`${oWins}`, 0, 100);
+}
+
