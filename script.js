@@ -1,6 +1,6 @@
 const space = document.querySelectorAll("game-square");
 
-const restart = document.getElementById("button-play-again");
+const restartButton = document.getElementById("button-play-again");
 
 const scoreBoard = document.querySelectorAll("scoreboard");
 
@@ -28,7 +28,7 @@ startGame();
 
 function startGame(){
     space.forEach(space => space.addEventListener("click", spaceClicked));
-    restart.addEventListener("click", restartGame);
+    restartButton.addEventListener("click", restartGame);
     turnStatus.textContent = `${playerTurn}'s turn`;
     running = true;
 }
@@ -40,7 +40,7 @@ function spaceClicked(){
         return;
     }
 
-    updateSelector(this, spaceSelector);
+    updateSpace(this, spaceSelector);
     checkWinner();
 }
 
