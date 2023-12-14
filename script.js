@@ -1,10 +1,10 @@
-const spaces = document.querySelectorAll(".game-square");
+const space = document.querySelectorAll(".game-square");
 
 const restart = document.querySelectorAll("#button-play-again");
 
 const scoreBoard = document.querySelectorAll(".scoreboard");
 
-const turn = document.querySelectorAll("#turn");
+const turnStatus = document.querySelectorAll("#turn");
 
 const winner = [
     /*horizontal*/
@@ -17,7 +17,24 @@ const winner = [
     [6, 7, 8],
     /*diagonal*/ 
     [0, 4, 8],
-    [2, 4, 6],
+    [2, 4, 6]
 ];
 
-let moves = ["", "", "", "", "", "", "", "", ""]
+let moves = ["", "", "", "", "", "", "", "", ""];
+let playerTurn = "X";
+
+function spaceClicked(){
+
+}
+
+function restartGame(){
+
+}
+
+startGame();
+function startGame(){
+    space.forEach(space => space.addEventListener("click", spaceClicked))
+    restart.addEventListener("click", restartGame)
+    turnStatus.textContent = "${playerTurn}'s turn"
+}
+
